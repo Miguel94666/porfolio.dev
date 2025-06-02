@@ -1,0 +1,26 @@
+  composer:
+    image: composer:2
+    container_name: dev_composer
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    entrypoint: ["composer"]
+    profiles: ["tools"]
+
+  node:
+    image: node:20
+    container_name: dev_node
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    tty: true
+    command: bash
+
+  git:
+    image: alpine/git
+    container_name: dev_git
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    entrypoint: ["git"]  # o usar profiles también
+    profiles: ["tools"]
